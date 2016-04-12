@@ -1,5 +1,9 @@
 import random
 
+def format_currency(value):
+    currency="{:,.2f}".format(value)
+    return currency
+
 MAX_INCREASE = 0.175	# 10%
 MAX_DECREASE = 0.05	# 5%
 MIN_PRICE = 0.01
@@ -7,7 +11,9 @@ MAX_PRICE = 100.0
 INITIAL_PRICE = 10.0
 day=0
 price = INITIAL_PRICE
-print("Starting price: ${:,.2f}".format(price))
+
+
+print("Starting price: $ {}".format(format_currency(price)))
 
 while price >= MIN_PRICE and price <= MAX_PRICE:
     priceChange = 0
@@ -25,4 +31,4 @@ while price >= MIN_PRICE and price <= MAX_PRICE:
     price *= (1 + priceChange)
     day+=1
 
-    print("On day {} price is: ${:,.2f}".format(day, price))
+    print("On day {} price is: $ {}".format(day, format_currency(price)))
